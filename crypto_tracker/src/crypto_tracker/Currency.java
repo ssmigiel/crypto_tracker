@@ -68,6 +68,7 @@ public class Currency {
 	public void recalculate() {
 		this.calcInvestedUsdt();
 		this.calcRetrievedUsdt();
+		this.calcAmountOwned();
 		this.calcAverageBuyPrice();
 		this.calcAverageSellPrice();
 		this.calcProfit();
@@ -117,6 +118,18 @@ public class Currency {
 			value += this.sellTransactions.get(i).getUsdtAmount();
 		}
 		this.retrievedUsdt = value;
+	}
+	
+	public void calcAmountOwned() {
+		float value = 0;
+		for(int i = 0; i < this.buyTransactions.size(); i++) {
+			value += this.buyTransactions.get(i).getAmount();
+		}
+		for(int i = 0; i < this.sellTransactions.size(); i++) {
+			value += this.sellTransactions.get(i).getAmount();
+		}
+		
+		this.amountOwned = value;
 	}
 	
 }
