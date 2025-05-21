@@ -3,7 +3,8 @@ package crypto_tracker;
 import java.util.List;
 
 public class Currency {
-	private List<DataEntry> dataEntries;
+	private List<Transaction> buyTransactions;
+	private List<Transaction> sellTransactions;
 	
 	private String name;
 	private float averageBuyPrice;
@@ -13,20 +14,23 @@ public class Currency {
 	private float retrievedUsdt;
 	private float profit;
 	
-	public Currency(String name, float averageBuyPrice, float averageSellPrice, float amountOwned, 
-					float investedUsdt, float retrievedUsdt, float profit) {
+	public Currency(String name) {
 		super();
 		this.name = name;
-		this.averageBuyPrice = averageBuyPrice;
-		this.averageSellPrice = averageSellPrice;
-		this.amountOwned = amountOwned;
-		this.investedUsdt = investedUsdt;
-		this.retrievedUsdt = retrievedUsdt;
-		this.profit = profit;
+		this.averageBuyPrice = 0;
+		this.averageSellPrice = 0;
+		this.amountOwned = 0;
+		this.investedUsdt = 0;
+		this.retrievedUsdt = 0;
 	}
 
-	public List<DataEntry> getDataEntries() {
-		return dataEntries;
+// Getters and setters
+	public List<Transaction> getBuyTransactions() {
+		return buyTransactions;
+	}
+	
+	public List<Transaction> getSellTransactions() {
+		return sellTransactions;
 	}
 	
 	public String getName() {
@@ -39,43 +43,44 @@ public class Currency {
 	public float getAverageBuyPrice() {
 		return averageBuyPrice;
 	}
-	public void setAverageBuyPrice(float averageBuyPrice) {
-		this.averageBuyPrice = averageBuyPrice;
-	}
 	
 	public float getAverageSellPrice() {
 		return averageSellPrice;
-	}
-	public void setAverageSellPrice(float averageSellPrice) {
-		this.averageSellPrice = averageSellPrice;
 	}
 	
 	public float getAmountOwned() {
 		return amountOwned;
 	}
-	public void setAmountOwned(float amountOwned) {
-		this.amountOwned = amountOwned;
-	}
 	
 	public float getInvestedUsdt() {
 		return investedUsdt;
-	}
-	public void setInvestedUsdt(float investedUsdt) {
-		this.investedUsdt = investedUsdt;
 	}
 	
 	public float getRetrievedUsdt() {
 		return retrievedUsdt;
 	}
-	public void setRetrievedUsdt(float retrievedUsdt) {
-		this.retrievedUsdt = retrievedUsdt;
-	}
 	
 	public float getProfit() {
 		return profit;
 	}
-	public void setProfit(float profit) {
-		this.profit = profit;
+
+// Methods
+	public void recalculate() {
+		this.calcAverageBuyPrice();
+		this.calcProfit();
+	}
+	
+	public void calcProfit() {
+		this.profit = this.retrievedUsdt - this.investedUsdt;
+	}
+	
+	public void calcAverageBuyPrice() {
+		float value = 0;
+		for(int i = 0; i < this.buyTransactions.size(); i++) {
+			value += this.buyTransactions.get(i).getPrice();
+		}
+		value /= this.buyTransactions.size();
+		this.averageBuyPrice = value;
 	}
 	
 }

@@ -2,14 +2,14 @@ package crypto_tracker;
 
 import java.util.Date;
 
-public class DataEntry {
+public class Transaction {
 	private Currency currency;
 	private Date dateAdded;
 	private float amount;
 	private float price;
 	private float usdtPaid;
 	
-	public DataEntry(Currency currency, Date dateAdded, float amount, float price, float usdtPaid) {
+	public Transaction(Currency currency, Date dateAdded, float amount, float price, float usdtPaid) {
 		super();
 		this.currency = currency;
 		this.dateAdded = dateAdded;
