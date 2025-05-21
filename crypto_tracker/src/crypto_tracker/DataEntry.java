@@ -1,15 +1,15 @@
 package crypto_tracker;
 
-import java.time.LocalDate;
+import java.util.Date;
 
 public class DataEntry {
 	private Currency currency;
-	private LocalDate dateAdded;
+	private Date dateAdded;
 	private float amount;
 	private float price;
 	private float usdtPaid;
 	
-	public DataEntry(Currency currency, LocalDate dateAdded, float amount, float price, float usdtPaid) {
+	public DataEntry(Currency currency, Date dateAdded, float amount, float price, float usdtPaid) {
 		super();
 		this.currency = currency;
 		this.dateAdded = dateAdded;
@@ -22,10 +22,10 @@ public class DataEntry {
 		return currency;
 	}
 	
-	public LocalDate getDateAdded() {
+	public Date getDateAdded() {
 		return dateAdded;
 	}
-	public void setDateAdded(LocalDate dateAdded) {
+	public void setDateAdded(Date dateAdded) {
 		this.dateAdded = dateAdded;
 	}
 	
