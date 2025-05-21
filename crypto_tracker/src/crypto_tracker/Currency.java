@@ -76,23 +76,31 @@ public class Currency {
 	public void calcProfit() {
 		this.profit = this.retrievedUsdt - this.investedUsdt;
 	}
-// TODO change to weighted average
+	
 	public void calcAverageBuyPrice() {
-		float value = 0;
+		float sum = 0;
+		float weightsSum = 0;
+		
 		for(int i = 0; i < this.buyTransactions.size(); i++) {
-			value += this.buyTransactions.get(i).getPrice();
+			Transaction transaction = this.buyTransactions.get(i);
+			sum += transaction.getPrice() * transaction.getAmount();
+			weightsSum += transaction.getAmount();
 		}
-		value /= this.buyTransactions.size();
-		this.averageBuyPrice = value;
+		
+		this.averageBuyPrice = sum / weightsSum;
 	}
-// TODO change to weighted average	
+
 	public void calcAverageSellPrice() {
-		float value = 0;
+		float sum = 0;
+		float weightsSum = 0;
+		
 		for(int i = 0; i < this.sellTransactions.size(); i++) {
-			value += this.sellTransactions.get(i).getPrice();
+			Transaction transaction = this.sellTransactions.get(i);
+			sum += transaction.getPrice() * transaction.getAmount();
+			weightsSum += transaction.getAmount();
 		}
-		value /= this.sellTransactions.size();
-		this.averageSellPrice = value;
+		
+		this.averageSellPrice = sum / weightsSum;
 	}
 	
 	public void calcInvestedUsdt() {
