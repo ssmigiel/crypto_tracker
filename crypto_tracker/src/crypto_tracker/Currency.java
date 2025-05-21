@@ -66,14 +66,17 @@ public class Currency {
 
 // Methods
 	public void recalculate() {
+		this.calcInvestedUsdt();
+		this.calcRetrievedUsdt();
 		this.calcAverageBuyPrice();
+		this.calcAverageSellPrice();
 		this.calcProfit();
 	}
 	
 	public void calcProfit() {
 		this.profit = this.retrievedUsdt - this.investedUsdt;
 	}
-	
+// TODO change to weighted average
 	public void calcAverageBuyPrice() {
 		float value = 0;
 		for(int i = 0; i < this.buyTransactions.size(); i++) {
@@ -81,6 +84,31 @@ public class Currency {
 		}
 		value /= this.buyTransactions.size();
 		this.averageBuyPrice = value;
+	}
+// TODO change to weighted average	
+	public void calcAverageSellPrice() {
+		float value = 0;
+		for(int i = 0; i < this.sellTransactions.size(); i++) {
+			value += this.sellTransactions.get(i).getPrice();
+		}
+		value /= this.sellTransactions.size();
+		this.averageSellPrice = value;
+	}
+	
+	public void calcInvestedUsdt() {
+		float value = 0;
+		for(int i = 0; i < this.buyTransactions.size(); i++) {
+			value += this.buyTransactions.get(i).getUsdtAmount();
+		}
+		this.investedUsdt = value;
+	}
+	
+	public void calcRetrievedUsdt() {
+		float value = 0;
+		for(int i = 0; i < this.sellTransactions.size(); i++) {
+			value += this.sellTransactions.get(i).getUsdtAmount();
+		}
+		this.retrievedUsdt = value;
 	}
 	
 }
