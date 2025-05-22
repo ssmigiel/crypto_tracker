@@ -5,6 +5,7 @@ import java.awt.BorderLayout;
 import javax.swing.JFrame;
 
 public class MainWindow {
+    private System system;
     private JFrame frame;
     private int width;
     private int length;
@@ -12,7 +13,8 @@ public class MainWindow {
     private MainMenu mainMenu;
     private FormCurrencies currenciesForm;
 
-    public MainWindow(int width, int length) {
+    public MainWindow(System system, int width, int length) {
+        this.system = system;
         this.width = width;
         this.length = length;
 
@@ -38,7 +40,7 @@ public class MainWindow {
         mainMenu = new MainMenu();
         this.frame.add(this.mainMenu.getMainMenuPanel(), BorderLayout.EAST);
 
-        currenciesForm = new FormCurrencies();
+        currenciesForm = new FormCurrencies(this.system.getCurrencies());
         this.frame.add(this.currenciesForm.getCurrenciesForm(), BorderLayout.CENTER);
     }
 }

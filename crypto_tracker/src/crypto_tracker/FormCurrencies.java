@@ -1,5 +1,8 @@
 package crypto_tracker;
 
+import java.awt.BorderLayout;
+import java.util.List;
+
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTabbedPane;
@@ -7,23 +10,30 @@ import javax.swing.JTabbedPane;
 public class FormCurrencies {
     private JTabbedPane currenciesForm;
 
-    public FormCurrencies() {
-        initialize();
+    public FormCurrencies(List<Currency> currencies) {
+        initialize(currencies);
     }
 
     public JTabbedPane getCurrenciesForm() {
         return this.currenciesForm;
     }
 
-    private void initialize() {
+    private void initialize(List<Currency> currencies) {
         currenciesForm = new JTabbedPane(JTabbedPane.LEFT);
-
-        JPanel page1 = new JPanel();
-        page1.add(new JLabel("This is Tab 1"));
-        JPanel page2 = new JPanel();
-        page2.add(new JLabel("This is Tab 2"));
-
-        this.currenciesForm.addTab("Tab 1", page1);
-        this.currenciesForm.addTab("Tab 2", page2);
+    /* 
+     * Try to add tabs for every currency
+     * On fail add single tab with info for user
+    */
+        try {
+            for(int i = 0; i < currencies.size(); i++) {
+                JPanel panel = new JPanel();
+                this.currenciesForm.addTab(currencies.get(i).getName(), panel);
+            }
+        }
+        catch(Exception e) {
+            JPanel panel = new JPanel();
+            panel.add(new JLabel("No currencies were found"), BorderLayout.CENTER);
+            this.currenciesForm.addTab("", panel);
+        }
     }
 }
