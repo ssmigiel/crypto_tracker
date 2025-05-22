@@ -19,9 +19,9 @@ public class System {
     private void initializeData() {
         currencies = new ArrayList<>();
     // TODO implement DB connection to store and retrieve data
-        currencies.add(new Currency("TAO"));
-        currencies.add(new Currency("ONDO"));
-        currencies.add(new Currency("KAS"));
+        currencies.add(new Currency(this, "TAO"));
+        currencies.add(new Currency(this, "ONDO"));
+        currencies.add(new Currency(this, "KAS"));
     }
 
     private void initializeWindow() {

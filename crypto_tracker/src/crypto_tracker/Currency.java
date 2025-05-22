@@ -3,6 +3,7 @@ package crypto_tracker;
 import java.util.List;
 
 public class Currency {
+	private System system;
 	private List<Transaction> buyTransactions;
 	private List<Transaction> sellTransactions;
 	
@@ -14,8 +15,9 @@ public class Currency {
 	private float retrievedUsdt;
 	private float profit;
 	
-	public Currency(String name) {
+	public Currency(System system, String name) {
 		super();
+		this.system = system;
 		this.name = name;
 		this.averageBuyPrice = 0;
 		this.averageSellPrice = 0;
