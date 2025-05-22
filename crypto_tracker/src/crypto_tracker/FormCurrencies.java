@@ -13,11 +13,13 @@ public class FormCurrencies {
     public FormCurrencies(List<Currency> currencies) {
         initialize(currencies);
     }
-
+    
+// Getters and Setters
     public JTabbedPane getCurrenciesForm() {
         return this.currenciesForm;
     }
-
+    
+// Methods
     private void initialize(List<Currency> currencies) {
         currenciesForm = new JTabbedPane(JTabbedPane.LEFT);
     /* 

@@ -27,6 +27,10 @@ public class Currency {
 	}
 
 // Getters and setters
+	public System getSystem() {
+		return system;
+	}
+	
 	public List<Transaction> getBuyTransactions() {
 		return buyTransactions;
 	}

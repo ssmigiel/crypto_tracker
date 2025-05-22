@@ -11,11 +11,13 @@ public class MainMenu {
     public MainMenu() {
         initialize();
     }
-
+    
+// Getters and Setters
     public JPanel getMainMenuPanel() {
         return this.mainMenuPanel;
     }
-
+    
+// Methods
     private void initialize() {
         mainMenuPanel = new JPanel();
         mainMenuPanel.setLayout(new FlowLayout(FlowLayout.CENTER, 10, 5));

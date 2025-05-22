@@ -20,7 +20,8 @@ public class MainWindow {
 
         initialize();
     }
-
+    
+// Getters and Setters
     public int getWidth() {
         return this.width;
     }
@@ -28,7 +29,8 @@ public class MainWindow {
     public int getLength() {
         return this.length;
     }
-
+    
+// Methods
     private void initialize() {
         frame = new JFrame();
         this.frame.setTitle("Crypto tracker");

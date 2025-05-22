@@ -11,11 +11,12 @@ public class System {
         initializeData();
         initializeWindow();
     }
-
+// Getters and Setters
     public List<Currency> getCurrencies() {
         return this.currencies;
     }
 
+// Methods    
     private void initializeData() {
         currencies = new ArrayList<>();
     // TODO implement DB connection to store and retrieve data

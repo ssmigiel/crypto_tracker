@@ -23,6 +23,7 @@ public class Transaction {
 		this.usdtAmount = usdtAmount;
 	}
 
+// Getters and Setters
 	public Currency getCurrency() {
 		return currency;
 	}
