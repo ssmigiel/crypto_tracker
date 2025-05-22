@@ -1,6 +1,7 @@
 package crypto_tracker;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 
 public class System {
@@ -23,6 +24,9 @@ public class System {
         currencies.add(new Currency(this, "TAO"));
         currencies.add(new Currency(this, "ONDO"));
         currencies.add(new Currency(this, "KAS"));
+        
+        // Sort currencies by name
+        currencies.sort(Comparator.comparing(Currency::getName));
     }
 
     private void initializeWindow() {
