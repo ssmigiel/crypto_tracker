@@ -9,4 +9,8 @@ public class System {
     public System() {
         this.window = new MainWindow(600, 500);
     }
+
+    public List<Currency> getCurrencies() {
+        return this.currencies;
+    }
 }
