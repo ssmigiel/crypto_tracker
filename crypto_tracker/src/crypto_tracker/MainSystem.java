@@ -19,6 +19,10 @@ public class MainSystem {
     public List<Currency> getCurrencies() {
         return this.currencies;
     }
+    
+    public DatabaseHandler getDbHandler() {
+    	return this.dbHandler;
+    }
 
 // Methods
     private void initializeData() {
