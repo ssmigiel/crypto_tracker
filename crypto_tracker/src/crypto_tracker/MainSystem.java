@@ -1,14 +1,21 @@
 package crypto_tracker;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 
-public class System {
+public class MainSystem {
+	private static Connection con;
+	
     private MainWindow window;
     private List<Currency> currencies;
 
-    public System() {
+    public MainSystem() {
+    	initializeConnection();
+    	
         initializeData();
         initializeWindow();
     }
@@ -17,7 +24,17 @@ public class System {
         return this.currencies;
     }
 
-// Methods    
+// Methods
+    private void initializeConnection() {
+    	try {
+    		Class.forName("org.sqlite.JDBC");
+    		con = DriverManager.getConnection("jdbc:sqlite:CryptoTrasker.db");
+    	}
+    	catch(Exception e) {
+    		System.out.println(e);
+    	}
+    }
+    
     private void initializeData() {
         currencies = new ArrayList<>();
     // TODO implement DB connection to store and retrieve data

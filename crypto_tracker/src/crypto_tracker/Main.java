@@ -8,7 +8,7 @@ public class Main {
 		SwingUtilities.invokeLater(new Runnable() {
 			@Override
 			public void run() {
-				System system = new System();
+				MainSystem system = new MainSystem();
 			}
 		});
 	}
