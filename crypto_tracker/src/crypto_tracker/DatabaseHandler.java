@@ -28,7 +28,7 @@ public class DatabaseHandler {
 	private void initializeConnection() {
     	try {
     		Class.forName("org.sqlite.JDBC");
-    		con = DriverManager.getConnection("jdbc:sqlite:CryptoTrasker.db");
+    		con = DriverManager.getConnection("jdbc:sqlite:CryptoTracker.db");
     		isConnected = true;
     	}
     	catch(Exception e) {
