@@ -155,4 +155,10 @@ public class Currency {
 		this.amountOwned = value;
 	}
 	
+// Static methods
+	public static Currency Create(MainSystem system, String name) {
+		Currency currency = new Currency(system, name);
+		return currency;
+	}
+	
 }

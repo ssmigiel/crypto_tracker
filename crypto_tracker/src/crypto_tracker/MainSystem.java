@@ -13,7 +13,7 @@ public class MainSystem {
         initializeData();
         initializeWindow();
         
-        dbHandler = new DatabaseHandler(this);
+//        dbHandler = new DatabaseHandler(this);
     }
 // Getters and Setters
     public List<Currency> getCurrencies() {
