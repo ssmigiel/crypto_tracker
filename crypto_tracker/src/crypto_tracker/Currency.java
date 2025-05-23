@@ -2,11 +2,19 @@ package crypto_tracker;
 
 import java.util.List;
 
+import jakarta.persistence.*;
+
+@Entity
+@Table(name="CURRENCIES")
 public class Currency {
 	private MainSystem system;
 	private List<Transaction> buyTransactions;
 	private List<Transaction> sellTransactions;
 	
+	@Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long id;
+	@Column(name = "name", nullable = false)
 	private String name;
 	private float averageBuyPrice;
 	private float averageSellPrice;
@@ -14,6 +22,11 @@ public class Currency {
 	private float investedUsdt;
 	private float retrievedUsdt;
 	private float profit;
+	
+	// Default empty constructor required by hibernate
+	public Currency() {
+		
+	}
 	
 	public Currency(MainSystem system, String name) {
 		super();
@@ -37,6 +50,10 @@ public class Currency {
 	
 	public List<Transaction> getSellTransactions() {
 		return sellTransactions;
+	}
+	
+	public Long getId() {
+		return id;
 	}
 	
 	public String getName() {
