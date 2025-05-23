@@ -39,4 +39,8 @@ public class MainSystem {
     private void initializeWindow() {
         this.window = new MainWindow(this, 600, 500);
     }
+    
+    public Currency addCurrency(String name) {
+    	return Currency.Create(this, name);
+    }
 }
