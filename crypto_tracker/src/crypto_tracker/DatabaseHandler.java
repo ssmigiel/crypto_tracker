@@ -34,7 +34,8 @@ public class DatabaseHandler {
     		isConnected = true;
     	}
     	catch(Exception e) {
-    		JOptionPane.showMessageDialog(null, "Database connection could not be established");
+    		JOptionPane.showMessageDialog(null, "Database connection could not be established \n"
+					+ "Application is working with local data", "Error", JOptionPane.INFORMATION_MESSAGE);
     	}
     }
 }
