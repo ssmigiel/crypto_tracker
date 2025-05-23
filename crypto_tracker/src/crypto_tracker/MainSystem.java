@@ -10,10 +10,10 @@ public class MainSystem {
     private List<Currency> currencies;
 
     public MainSystem() {
-    	dbHandler = new DatabaseHandler(this);
-    	
         initializeData();
         initializeWindow();
+        
+        dbHandler = new DatabaseHandler(this);
     }
 // Getters and Setters
     public List<Currency> getCurrencies() {

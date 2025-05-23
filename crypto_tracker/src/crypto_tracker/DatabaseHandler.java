@@ -3,6 +3,8 @@ package crypto_tracker;
 import java.sql.Connection;
 import java.sql.DriverManager;
 
+import javax.swing.JOptionPane;
+
 public class DatabaseHandler {
 	private MainSystem system;
 	private static Connection con;
@@ -32,7 +34,7 @@ public class DatabaseHandler {
     		isConnected = true;
     	}
     	catch(Exception e) {
-    		System.out.println(e);
+    		JOptionPane.showMessageDialog(null, "Database connection could not be established");
     	}
     }
 }
