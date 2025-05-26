@@ -74,6 +74,18 @@ public class Transaction {
 	}
 
 // Static methods
+	public static Transaction CreateBuyTransaction(Currency currency, Date dateAdded, float amount, float price, float usdtAmount) {
+		Transaction transaction = new Transaction(currency, true, false, dateAdded, amount, price, usdtAmount);
+		
+		return transaction;
+	}
+	
+	public static Transaction CreateSellTransaction(Currency currency, Date dateAdded, float amount, float price, float usdtAmount) {
+		Transaction transaction = new Transaction(currency, false, true, dateAdded, amount, price, usdtAmount);
+		
+		return transaction;
+	}
+	
 	public static void Delete(Transaction transaction) {
 		if(transaction.getIsBuyTransaction()) {
 			transaction.getCurrency().getBuyTransactions().remove(transaction);
