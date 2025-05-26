@@ -173,18 +173,18 @@ public class Currency {
 		return Transaction.CreateSellTransaction(this, dateAdded, amount, price, usdtAmount);
 	}
 	
-	public void removeAllTransactions() {
+	private void removeAllTransactions() {
 		this.removeAllBuyTransactions();
 		this.removeAllSellTransactions();
 	}
 	
-	public void removeAllBuyTransactions() {
+	private void removeAllBuyTransactions() {
 		for(int i = 0; i < this.buyTransactions.size();i++) {
 			Transaction.Delete(this.buyTransactions.get(i));
 		}
 	}
 	
-	public void removeAllSellTransactions() {
+	private void removeAllSellTransactions() {
 		for(int i = 0; i < this.sellTransactions.size();i++) {
 			Transaction.Delete(this.sellTransactions.get(i));
 		}

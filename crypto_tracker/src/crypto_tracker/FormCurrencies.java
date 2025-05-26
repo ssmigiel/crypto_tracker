@@ -8,20 +8,26 @@ import javax.swing.JPanel;
 import javax.swing.JTabbedPane;
 
 public class FormCurrencies {
-    private JTabbedPane currenciesForm;
+	private JPanel form;
+    private JTabbedPane currenciesPanel;
+    private FormMenu menu;
 
     public FormCurrencies(List<Currency> currencies) {
+    	form = new JPanel();
+    	form.setLayout(new BorderLayout());
+    	menu = new FormMenu();
+    	currenciesPanel = new JTabbedPane(JTabbedPane.LEFT);
+    	
         initialize(currencies);
     }
     
 // Getters and Setters
-    public JTabbedPane getCurrenciesForm() {
-        return this.currenciesForm;
+    public JPanel getCurrenciesForm() {
+        return this.form;
     }
     
 // Methods
     private void initialize(List<Currency> currencies) {
-        currenciesForm = new JTabbedPane(JTabbedPane.LEFT);
     /* 
      * Try to add tabs for every currency
      * On fail add single tab with info for user
@@ -29,13 +35,16 @@ public class FormCurrencies {
         try {
             for(int i = 0; i < currencies.size(); i++) {
                 JPanel panel = new JPanel();
-                this.currenciesForm.addTab(currencies.get(i).getName(), panel);
+                this.currenciesPanel.addTab(currencies.get(i).getName(), panel);
             }
         }
         catch(Exception e) {
             JPanel panel = new JPanel();
             panel.add(new JLabel("No currencies were found"), BorderLayout.CENTER);
-            this.currenciesForm.addTab("", panel);
+            this.currenciesPanel.addTab("", panel);
         }
+        
+        form.add(this.currenciesPanel, BorderLayout.CENTER);
+        form.add(menu.getMenuPanel(), BorderLayout.EAST);
     }
 }

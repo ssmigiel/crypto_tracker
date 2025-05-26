@@ -5,15 +5,15 @@ import java.awt.FlowLayout;
 
 import javax.swing.JPanel;
 
-public class MainMenu {
+public class FormMenu {
     private JPanel mainMenuPanel;
 
-    public MainMenu() {
+    public FormMenu() {
         initialize();
     }
     
 // Getters and Setters
-    public JPanel getMainMenuPanel() {
+    public JPanel getMenuPanel() {
         return this.mainMenuPanel;
     }
     
