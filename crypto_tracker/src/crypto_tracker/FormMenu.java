@@ -5,22 +5,17 @@ import java.awt.FlowLayout;
 
 import javax.swing.JPanel;
 
-public class FormMenu {
-    private JPanel mainMenuPanel;
+public class FormMenu extends Form{
 
     public FormMenu() {
+    	super(new FlowLayout(FlowLayout.CENTER, 10, 5));
         initialize();
     }
     
 // Getters and Setters
-    public JPanel getMenuPanel() {
-        return this.mainMenuPanel;
-    }
     
 // Methods
     private void initialize() {
-        mainMenuPanel = new JPanel();
-        mainMenuPanel.setLayout(new FlowLayout(FlowLayout.CENTER, 10, 5));
-        mainMenuPanel.setBackground(Color.BLUE);
+        this.form.setBackground(Color.BLUE);
     }
 }

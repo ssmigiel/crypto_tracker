@@ -40,6 +40,6 @@ public class FormCurrencies extends Form{
         }
         
         form.add(this.currenciesPanel, BorderLayout.CENTER);
-        form.add(menu.getMenuPanel(), BorderLayout.EAST);
+        form.add(menu.getForm(), BorderLayout.EAST);
     }
 }
