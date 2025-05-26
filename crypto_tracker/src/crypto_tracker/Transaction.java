@@ -27,15 +27,18 @@ public class Transaction {
 	public Currency getCurrency() {
 		return currency;
 	}
+	private void setCurrency(Currency currency) {
+		this.currency = currency;
+	}
 	
-	public boolean isBuyTransaction() {
+	public boolean getIsBuyTransaction() {
 		return isBuyTransaction;
 	}
 	public void setIsBuyTransaction(boolean isBuyTransaction) {
 		this.isBuyTransaction = isBuyTransaction;
 	}
 
-	public boolean isSellTransaction() {
+	public boolean getIsSellTransaction() {
 		return isSellTransaction;
 	}
 	public void setIsSellTransaction(boolean isSellTransaction) {
@@ -68,6 +71,18 @@ public class Transaction {
 	}
 	public void setUsdtAmount(float usdtAmount) {
 		this.usdtAmount = usdtAmount;
+	}
+
+// Static methods
+	public static void Delete(Transaction transaction) {
+		if(transaction.getIsBuyTransaction()) {
+			transaction.getCurrency().getBuyTransactions().remove(transaction);
+		}
+		else {
+			transaction.getCurrency().getSellTransactions().remove(transaction);
+		}
+		
+		transaction.setCurrency(null);
 	}
 	
 }

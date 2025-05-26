@@ -50,9 +50,15 @@ public class Currency {
 	public List<Transaction> getBuyTransactions() {
 		return buyTransactions;
 	}
-	
+	private void setBuyTransactions(List<Transaction> buyTransactions) {
+		this.buyTransactions = buyTransactions;
+	}
+
 	public List<Transaction> getSellTransactions() {
 		return sellTransactions;
+	}
+	private void setSellTransactions(List<Transaction> sellTransactions) {
+		this.sellTransactions = sellTransactions;
 	}
 	
 	public Long getId() {
@@ -158,6 +164,23 @@ public class Currency {
 		this.amountOwned = value;
 	}
 	
+	public void removeAllTransactions() {
+		this.removeAllBuyTransactions();
+		this.removeAllSellTransactions();
+	}
+	
+	public void removeAllBuyTransactions() {
+		for(int i = 0; i < this.buyTransactions.size();i++) {
+			Transaction.Delete(this.buyTransactions.get(i));
+		}
+	}
+	
+	public void removeAllSellTransactions() {
+		for(int i = 0; i < this.sellTransactions.size();i++) {
+			Transaction.Delete(this.sellTransactions.get(i));
+		}
+	}
+	
 // Static methods
 	public static Currency Create(MainSystem system, String name) {
 		Currency currency = new Currency(system, name);
@@ -165,6 +188,9 @@ public class Currency {
 	}
 	
 	public static void Delete(Currency currency) {
+		currency.setBuyTransactions(null);
+		currency.setSellTransactions(null);
+		
 		MainSystem sys = currency.getSystem();
 		sys.getCurrencies().remove(currency);
 		currency.setSystem(null);
