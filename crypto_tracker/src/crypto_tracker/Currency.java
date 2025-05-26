@@ -188,8 +188,7 @@ public class Currency {
 	}
 	
 	public static void Delete(Currency currency) {
-		currency.setBuyTransactions(null);
-		currency.setSellTransactions(null);
+		currency.removeAllTransactions();
 		
 		MainSystem sys = currency.getSystem();
 		sys.getCurrencies().remove(currency);
