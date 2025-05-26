@@ -47,4 +47,10 @@ public class MainSystem {
     public void removeCurrency(Currency currency) {
     	Currency.Delete(currency);
     }
+    
+    public void removeAllCurrencies() {
+    	for(int i = 0; i < this.currencies.size(); i++) {
+    		Currency.Delete(this.currencies.get(i));
+    	}
+    }
 }
