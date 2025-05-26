@@ -7,24 +7,19 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTabbedPane;
 
-public class FormCurrencies {
-	private JPanel form;
+public class FormCurrencies extends Form{
     private JTabbedPane currenciesPanel;
     private FormMenu menu;
 
     public FormCurrencies(List<Currency> currencies) {
+    	super(new BorderLayout());
         initialize(currencies);
     }
     
 // Getters and Setters
-    public JPanel getCurrenciesForm() {
-        return this.form;
-    }
     
 // Methods
     private void initialize(List<Currency> currencies) {
-    	form = new JPanel();
-    	form.setLayout(new BorderLayout());
     	menu = new FormMenu();
     	currenciesPanel = new JTabbedPane(JTabbedPane.LEFT);
     	
