@@ -43,6 +43,9 @@ public class Currency {
 	public MainSystem getSystem() {
 		return system;
 	}
+	private void setSystem(MainSystem system) {
+		this.system = system;
+	}
 	
 	public List<Transaction> getBuyTransactions() {
 		return buyTransactions;
@@ -159,6 +162,12 @@ public class Currency {
 	public static Currency Create(MainSystem system, String name) {
 		Currency currency = new Currency(system, name);
 		return currency;
+	}
+	
+	public static void Delete(Currency currency) {
+		MainSystem sys = currency.getSystem();
+		sys.getCurrencies().remove(currency);
+		currency.setSystem(null);
 	}
 	
 }

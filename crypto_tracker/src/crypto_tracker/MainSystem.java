@@ -43,4 +43,8 @@ public class MainSystem {
     public Currency addCurrency(String name) {
     	return Currency.Create(this, name);
     }
+    
+    public void removeCurrency(Currency currency) {
+    	Currency.Delete(currency);
+    }
 }
