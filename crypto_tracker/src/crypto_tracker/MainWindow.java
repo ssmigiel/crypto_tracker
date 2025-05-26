@@ -10,6 +10,7 @@ public class MainWindow {
     private int width;
     private int length;
 
+    private MainMenu mainMenu;
     private FormCurrencies currenciesForm;
 
     public MainWindow(MainSystem system, int width, int length) {
@@ -37,6 +38,9 @@ public class MainWindow {
         this.frame.setSize(this.width, this.length);
         this.frame.setLocationRelativeTo(null);
         this.frame.setVisible(true);
+        
+        mainMenu = new MainMenu(this);
+        frame.setJMenuBar(mainMenu.getMenuBar());
 
         currenciesForm = new FormCurrencies(this.system.getCurrencies());
         this.frame.add(this.currenciesForm.getCurrenciesForm(), BorderLayout.CENTER);

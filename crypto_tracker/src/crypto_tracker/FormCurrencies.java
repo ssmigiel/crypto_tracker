@@ -13,11 +13,6 @@ public class FormCurrencies {
     private FormMenu menu;
 
     public FormCurrencies(List<Currency> currencies) {
-    	form = new JPanel();
-    	form.setLayout(new BorderLayout());
-    	menu = new FormMenu();
-    	currenciesPanel = new JTabbedPane(JTabbedPane.LEFT);
-    	
         initialize(currencies);
     }
     
@@ -28,6 +23,11 @@ public class FormCurrencies {
     
 // Methods
     private void initialize(List<Currency> currencies) {
+    	form = new JPanel();
+    	form.setLayout(new BorderLayout());
+    	menu = new FormMenu();
+    	currenciesPanel = new JTabbedPane(JTabbedPane.LEFT);
+    	
     /* 
      * Try to add tabs for every currency
      * On fail add single tab with info for user
