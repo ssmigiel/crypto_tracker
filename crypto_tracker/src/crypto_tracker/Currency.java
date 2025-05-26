@@ -1,5 +1,6 @@
 package crypto_tracker;
 
+import java.util.Date;
 import java.util.List;
 
 import jakarta.persistence.*;
@@ -162,6 +163,14 @@ public class Currency {
 		}
 		
 		this.amountOwned = value;
+	}
+	
+	public Transaction addBuyTransaction(Date dateAdded, float amount, float price, float usdtAmount) {
+		return Transaction.CreateBuyTransaction(this, dateAdded, amount, price, usdtAmount);
+	}
+	
+	public Transaction addSellTransaction(Date dateAdded, float amount, float price, float usdtAmount) {
+		return Transaction.CreateSellTransaction(this, dateAdded, amount, price, usdtAmount);
 	}
 	
 	public void removeAllTransactions() {
