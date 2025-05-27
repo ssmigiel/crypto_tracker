@@ -3,8 +3,6 @@ package crypto_tracker;
 import java.awt.Color;
 import java.awt.FlowLayout;
 
-import javax.swing.JPanel;
-
 public class FormMenu extends Form{
 
     public FormMenu() {

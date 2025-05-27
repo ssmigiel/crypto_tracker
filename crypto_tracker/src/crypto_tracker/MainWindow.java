@@ -22,6 +22,10 @@ public class MainWindow {
     }
     
 // Getters and Setters
+    public MainSystem getSystem() {
+    	return this.system;
+    }
+    
     public int getWidth() {
         return this.width;
     }
@@ -30,7 +34,11 @@ public class MainWindow {
         return this.length;
     }
     
-// Methods
+    public Form getActiveForm() {
+		return activeForm;
+	}
+
+	// Methods
     private void initialize() {
         frame = new JFrame();
         this.frame.setTitle("Crypto tracker");
@@ -41,8 +49,12 @@ public class MainWindow {
         
         mainMenu = new MainMenu(this);
         frame.setJMenuBar(mainMenu.getMenuBar());
-        
-//        currenciesForm = new FormCurrencies(this.system.getCurrencies());
-//        this.frame.add(this.currenciesForm.getCurrenciesForm(), BorderLayout.CENTER);
     }
+    
+    public void setActiveForm(Form activeForm) {
+    	this.frame.add(activeForm.getForm(), BorderLayout.CENTER);
+		this.activeForm = activeForm;
+		this.frame.setVisible(true);
+	}
+
 }
