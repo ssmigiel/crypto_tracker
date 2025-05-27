@@ -41,7 +41,7 @@ public class MainSystem {
     }
 
     private void initializeWindow() {
-        this.window = new MainWindow(this, 600, 500);
+        this.window = new MainWindow(this, 800, 600);
     }
     
     public Currency addCurrency(String name) {

@@ -57,15 +57,5 @@ public class MainMenu {
 		
 		return newMenu;
 	}
-	
-	private JMenu addMenu(String menuName, int keyEvent, ImageIcon icon) {
-		JMenu newMenu = new JMenu(menuName);
-		newMenu.setMnemonic(keyEvent);
-		newMenu.setIcon(icon);
-		newMenu.setIconTextGap(iconTextGap);
-		
-		this.menuBar.add(newMenu);
-		
-		return newMenu;
-	}
+
 }

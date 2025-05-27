@@ -21,6 +21,9 @@ public class FormCurrencies extends Form{
 // Methods
     private void initialize(List<Currency> currencies) {
     	menu = new FormMenu(window);
+    	
+    	createMenuButtons();
+    	
     	currenciesPanel = new JTabbedPane(JTabbedPane.LEFT);
     	
     /* 
@@ -41,5 +44,9 @@ public class FormCurrencies extends Form{
         
         form.add(this.currenciesPanel, BorderLayout.CENTER);
         form.add(menu.getForm(), BorderLayout.WEST);
+    }
+    
+    private void createMenuButtons() {
+    	this.menu.addButton("Add currency");
     }
 }
