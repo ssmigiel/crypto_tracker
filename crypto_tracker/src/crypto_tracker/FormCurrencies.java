@@ -11,8 +11,8 @@ public class FormCurrencies extends Form{
     private JTabbedPane currenciesPanel;
     private FormMenu menu;
 
-    public FormCurrencies(List<Currency> currencies) {
-    	super(new BorderLayout());
+    public FormCurrencies(MainWindow window, List<Currency> currencies) {
+    	super(window, new BorderLayout());
         initialize(currencies);
     }
     
@@ -20,7 +20,7 @@ public class FormCurrencies extends Form{
     
 // Methods
     private void initialize(List<Currency> currencies) {
-    	menu = new FormMenu();
+    	menu = new FormMenu(window);
     	currenciesPanel = new JTabbedPane(JTabbedPane.LEFT);
     	
     /* 

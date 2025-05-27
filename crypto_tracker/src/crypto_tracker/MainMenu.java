@@ -42,7 +42,7 @@ public class MainMenu {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				mainWindow.setActiveForm(new FormCurrencies(mainWindow.getSystem().getCurrencies()));
+				mainWindow.setActiveForm(new FormCurrencies(mainWindow, mainWindow.getSystem().getCurrencies()));
 			}
 			
 		});

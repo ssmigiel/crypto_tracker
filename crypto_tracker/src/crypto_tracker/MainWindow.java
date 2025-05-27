@@ -52,8 +52,13 @@ public class MainWindow {
     }
     
     public void setActiveForm(Form activeForm) {
+    	if(this.activeForm != null) {
+    		this.activeForm.deactivate();
+    	}
+    	
     	this.frame.add(activeForm.getForm(), BorderLayout.CENTER);
 		this.activeForm = activeForm;
+		activeForm.setIsActiveForm(true);
 		this.frame.setVisible(true);
 	}
 

@@ -16,6 +16,10 @@ public class MainSystem {
 //        dbHandler = new DatabaseHandler(this);
     }
 // Getters and Setters
+    public MainWindow getMainWindow() {
+    	return this.window;
+    }
+    
     public List<Currency> getCurrencies() {
         return this.currencies;
     }

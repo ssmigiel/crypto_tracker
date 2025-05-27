@@ -5,8 +5,8 @@ import java.awt.FlowLayout;
 
 public class FormMenu extends Form{
 
-    public FormMenu() {
-    	super(new FlowLayout(FlowLayout.CENTER, 10, 5));
+    public FormMenu(MainWindow window) {
+    	super(window, new FlowLayout(FlowLayout.CENTER, 10, 5));
         initialize();
     }
     
