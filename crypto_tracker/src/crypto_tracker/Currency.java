@@ -1,5 +1,6 @@
 package crypto_tracker;
 
+import java.util.Comparator;
 import java.util.Date;
 import java.util.List;
 
@@ -193,6 +194,11 @@ public class Currency {
 // Static methods
 	public static Currency Create(MainSystem system, String name) {
 		Currency currency = new Currency(system, name);
+		MainSystem sys = currency.getSystem();
+
+		sys.getCurrencies().add(currency);
+		sys.getCurrencies().sort(Comparator.comparing(Currency::getName));
+		
 		return currency;
 	}
 	
