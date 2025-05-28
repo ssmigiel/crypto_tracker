@@ -180,14 +180,18 @@ public class Currency {
 	}
 	
 	private void removeAllBuyTransactions() {
-		for(int i = 0; i < this.buyTransactions.size();i++) {
-			Transaction.Delete(this.buyTransactions.get(i));
+		if(this.buyTransactions != null) {
+			for(int i = 0; i < this.buyTransactions.size();i++) {
+				Transaction.Delete(this.buyTransactions.get(i));
+			}
 		}
 	}
 	
 	private void removeAllSellTransactions() {
-		for(int i = 0; i < this.sellTransactions.size();i++) {
-			Transaction.Delete(this.sellTransactions.get(i));
+		if(this.sellTransactions != null){
+			for(int i = 0; i < this.sellTransactions.size();i++) {
+				Transaction.Delete(this.sellTransactions.get(i));
+			}
 		}
 	}
 	
@@ -198,7 +202,7 @@ public class Currency {
 
 		sys.getCurrencies().add(currency);
 		sys.getCurrencies().sort(Comparator.comparing(Currency::getName));
-		
+
 		return currency;
 	}
 	
@@ -210,4 +214,14 @@ public class Currency {
 		currency.setSystem(null);
 	}
 	
+	public static Currency getCurrencyByName(List<Currency> currencies, String name) {
+		for(Currency c : currencies){
+			if(c.getName().equals(name)) {
+				return c;
+			}
+		}
+
+		return null;
+	}
+
 }
