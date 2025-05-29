@@ -18,6 +18,7 @@ public class Currency {
 	private Long id;
 	@Column(name = "name", nullable = false)
 	private String name;
+	private boolean isSoftDeleted;
 	private float averageBuyPrice;
 	private float averageSellPrice;
 	private float amountOwned;
@@ -34,6 +35,7 @@ public class Currency {
 		super();
 		this.system = system;
 		this.name = name;
+		this.isSoftDeleted = false;
 		this.averageBuyPrice = 0;
 		this.averageSellPrice = 0;
 		this.amountOwned = 0;
@@ -47,6 +49,13 @@ public class Currency {
 	}
 	private void setSystem(MainSystem system) {
 		this.system = system;
+	}
+
+	public boolean getIsSoftDeleted() {
+		return isSoftDeleted;
+	}
+	private void setIsSoftDeleted(boolean isSoftDeleted) {
+		this.isSoftDeleted = isSoftDeleted;
 	}
 	
 	public List<Transaction> getBuyTransactions() {
@@ -212,6 +221,7 @@ public class Currency {
 		MainSystem sys = currency.getSystem();
 		sys.getCurrencies().remove(currency);
 		currency.setSystem(null);
+		currency.setIsSoftDeleted(true);
 	}
 	
 	public static Currency getCurrencyByName(List<Currency> currencies, String name) {

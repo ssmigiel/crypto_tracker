@@ -65,8 +65,7 @@ public class FormCurrencies extends Form{
                     "");
 
                 if ((s != null) && (s.length() > 0)) {
-                    window.getSystem().addCurrency(s);
-                    refreshCurrenciesPanel();
+                    refreshCurrenciesPanel(window.getSystem().addCurrency(s));
                     return;
                 }
 // TODO check if currency already exists
@@ -94,7 +93,7 @@ public class FormCurrencies extends Form{
                 
                 if(c != null) {
                     window.getSystem().removeCurrency(c);
-                    refreshCurrenciesPanel();
+                    refreshCurrenciesPanel(c);
                     return;
                 }
 
@@ -104,34 +103,30 @@ public class FormCurrencies extends Form{
         });
     }
 
-    private void refreshCurrenciesPanel() {
-        List<Currency> currencies = window.getSystem().getCurrencies();
-        System.out.println(currencies);
-        if(currencies.size() == 0) {
-            currenciesPanel.removeAll();
-            JPanel panel = new JPanel();
-            panel.add(new JLabel("No currencies were found"), BorderLayout.CENTER);
-            this.currenciesPanel.addTab("", panel);
-        }
-        else if(currencies.size() == 1) {
-            currenciesPanel.removeAll();
-            JPanel panel = new JPanel();
-            this.currenciesPanel.addTab(currencies.get(0).getName(), panel);
-        }
-        else {
-            // TODO add case for deleting tabs
-            int tabCount = this.currenciesPanel.getTabCount();
-            for(int i = 0; i < tabCount; i++) {
-                if(this.currenciesPanel.getTitleAt(i) != currencies.get(i).getName())
-                {
-                    JPanel panel = new JPanel();
-                    this.currenciesPanel.insertTab(currencies.get(i).getName(), null, panel, null, i);
+    private void refreshCurrenciesPanel(Currency c) {
+        // Tab is deleted
+        if(c.getIsSoftDeleted()) {
+            for(int i = 0; i < this.currenciesPanel.getTabCount(); i++) {
+                if(this.currenciesPanel.getTitleAt(i).equals(c.getName())) {
+                    this.currenciesPanel.remove(i);
+                    break;
                 }
             }
-            if(currencies.getLast().getName() != this.currenciesPanel.getTitleAt(tabCount - 1)) {
+            if(this.currenciesPanel.getTabCount() == 0) {
                 JPanel panel = new JPanel();
-                this.currenciesPanel.insertTab(currencies.getLast().getName(), null, panel, null, tabCount);
+                panel.add(new JLabel("No currencies were found"), BorderLayout.CENTER);
+                this.currenciesPanel.addTab("", panel);
             }
+        }
+        // Tab is added
+        else {
+            int index = window.getSystem().getCurrencies().indexOf(c);
+            // Only info tab exists - needs to be deleted
+            if (index == 0 && this.currenciesPanel.getTitleAt(0).equals("")) {
+                currenciesPanel.removeAll();
+            }
+            JPanel panel = new JPanel();
+            this.currenciesPanel.insertTab(c.getName(), null, panel, null, index);
         }
     }
 }
