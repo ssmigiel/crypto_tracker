@@ -6,6 +6,7 @@ import java.awt.event.ActionListener;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import javax.swing.BoxLayout;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -16,7 +17,8 @@ public class FormCurrencies extends Form{
     private FormMenu menu;
 
     public FormCurrencies(MainWindow window, List<Currency> currencies) {
-    	super(window, new BorderLayout());
+    	super(window);
+        this.setLayout(new BorderLayout());
         initialize(currencies);
     }
     
@@ -25,6 +27,7 @@ public class FormCurrencies extends Form{
 // Methods
     private void initialize(List<Currency> currencies) {
     	menu = new FormMenu(window);
+        menu.setLayout(new BoxLayout(menu.form, BoxLayout.Y_AXIS));
     	
     	createMenuButtons();
     	

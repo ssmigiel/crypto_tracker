@@ -9,10 +9,9 @@ public class Form {
 	protected JPanel form;
 	protected boolean isActiveForm;
 	
-	public Form(MainWindow window, LayoutManager layout) {
+	public Form(MainWindow window) {
 		this.window = window;
 		form = new JPanel();
-		this.form.setLayout(layout);
 		this.isActiveForm = false;
 	}
 
@@ -34,4 +33,7 @@ public class Form {
 		this.isActiveForm = false;
 	}
 	
+	public void setLayout(LayoutManager layout) {
+		this.form.setLayout(layout);
+	}
 }
