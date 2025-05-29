@@ -45,7 +45,7 @@ public class MainSystem {
     }
     
     public Currency addCurrency(String name) {
-    	return Currency.Create(this, name);
+    	return Currency.Create(this, name.toUpperCase());
     }
     
     public void removeCurrency(Currency currency) {

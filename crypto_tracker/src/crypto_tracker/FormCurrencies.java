@@ -68,10 +68,19 @@ public class FormCurrencies extends Form{
                     "");
 
                 if ((s != null) && (s.length() > 0)) {
+                    // Check if already exists
+                    List<Currency> currencies = window.getSystem().getCurrencies();
+                    for(int i = 0; i < currencies.size(); i++) {
+                        if(currencies.get(i).getName().equals(s.toUpperCase())) {
+                            JOptionPane.showMessageDialog(form, "Currency already exists", "Error", JOptionPane.INFORMATION_MESSAGE);
+                            return;
+                        }
+                    }
+
                     refreshCurrenciesPanel(window.getSystem().addCurrency(s));
                     return;
                 }
-// TODO check if currency already exists
+
                 JOptionPane.showMessageDialog(form, "Name cannot be empty", "Error", JOptionPane.INFORMATION_MESSAGE);
 			}
 			
