@@ -39,4 +39,9 @@ public class Kpi {
     public void setValue(float value) {
         this.value = value;
     }
+
+// Static methods
+    public static void Delete(Kpi kpi) {
+        kpi.setCurrency(null);
+    }
 }

@@ -204,6 +204,21 @@ public class Currency {
 			}
 		}
 	}
+
+	private void removeAllKpi() {
+		Kpi.Delete(averageBuyPrice);
+		this.averageBuyPrice = null;
+		Kpi.Delete(averageSellPrice);
+		this.averageSellPrice = null;
+		Kpi.Delete(amountOwned);
+		this.amountOwned = null;
+		Kpi.Delete(investedUsdt);
+		this.investedUsdt = null;
+		Kpi.Delete(retrievedUsdt);
+		this.retrievedUsdt = null;
+		Kpi.Delete(profit);
+		this.profit = null;
+	}
 	
 // Static methods
 	public static Currency Create(MainSystem system, String name) {
@@ -217,6 +232,7 @@ public class Currency {
 	}
 	
 	public static void Delete(Currency currency) {
+		currency.removeAllKpi();
 		currency.removeAllTransactions();
 		
 		MainSystem sys = currency.getSystem();
