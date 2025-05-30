@@ -36,11 +36,12 @@ public class Currency {
 		this.system = system;
 		this.name = name;
 		this.isSoftDeleted = false;
-		this.averageBuyPrice = new Kpi(this, "averageBuyPrice", 0);
-		this.averageSellPrice = new Kpi(this, "averageSellPrice", 0);
-		this.amountOwned = new Kpi(this, "amountOwned", 0);
-		this.investedUsdt = new Kpi(this, "investedUsdt", 0);
-		this.retrievedUsdt = new Kpi(this, "retrievedUsdt", 0);
+		this.averageBuyPrice = new Kpi(this, "averageBuyPrice", "Average Buy Price",  0);
+		this.averageSellPrice = new Kpi(this, "averageSellPrice", "Average Sell Price",  0);
+		this.amountOwned = new Kpi(this, "amountOwned", "Amount Owned", 0);
+		this.investedUsdt = new Kpi(this, "investedUsdt","Invested Usdt", 0);
+		this.retrievedUsdt = new Kpi(this, "retrievedUsdt", "Retrieved Usdt", 0);
+		this.profit = new Kpi(this, "profit", "Profit", 0);
 	}
 
 // Getters and setters
@@ -118,7 +119,7 @@ public class Currency {
 	}
 	
 	public void calcProfit() {
-		this.profit = this.retrievedUsdt - this.investedUsdt;
+		this.profit.setValue(this.retrievedUsdt.getValue() - this.investedUsdt.getValue());
 	}
 	
 	public void calcAverageBuyPrice() {
@@ -131,7 +132,7 @@ public class Currency {
 			weightsSum += transaction.getAmount();
 		}
 		
-		this.averageBuyPrice = sum / weightsSum;
+		this.averageBuyPrice.setValue(sum / weightsSum);
 	}
 
 	public void calcAverageSellPrice() {
@@ -144,7 +145,7 @@ public class Currency {
 			weightsSum += transaction.getAmount();
 		}
 		
-		this.averageSellPrice = sum / weightsSum;
+		this.averageSellPrice.setValue(sum / weightsSum);
 	}
 	
 	public void calcInvestedUsdt() {
@@ -152,7 +153,7 @@ public class Currency {
 		for(int i = 0; i < this.buyTransactions.size(); i++) {
 			value += this.buyTransactions.get(i).getUsdtAmount();
 		}
-		this.investedUsdt = value;
+		this.investedUsdt.setValue(value);
 	}
 	
 	public void calcRetrievedUsdt() {
@@ -160,7 +161,7 @@ public class Currency {
 		for(int i = 0; i < this.sellTransactions.size(); i++) {
 			value += this.sellTransactions.get(i).getUsdtAmount();
 		}
-		this.retrievedUsdt = value;
+		this.retrievedUsdt.setValue(value);
 	}
 	
 	public void calcAmountOwned() {
@@ -172,7 +173,7 @@ public class Currency {
 			value += this.sellTransactions.get(i).getAmount();
 		}
 		
-		this.amountOwned = value;
+		this.amountOwned.setValue(value);
 	}
 	
 	public Transaction addBuyTransaction(Date dateAdded, float amount, float price, float usdtAmount) {
