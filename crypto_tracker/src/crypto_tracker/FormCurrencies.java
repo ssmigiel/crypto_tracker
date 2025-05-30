@@ -1,12 +1,14 @@
 package crypto_tracker;
 
 import java.awt.BorderLayout;
+import java.awt.Component;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.List;
 import java.util.stream.Collectors;
 
 import javax.swing.BoxLayout;
+import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -35,7 +37,7 @@ public class FormCurrencies extends Form{
     	currenciesPanel = new JTabbedPane(JTabbedPane.LEFT);
 
         kpiDashboard = new FormKpiDashboard(window);
-    	kpiDashboard.setLayout(new BoxLayout(menu.form, BoxLayout.Y_AXIS));
+    	kpiDashboard.setLayout(new BoxLayout(kpiDashboard.form, BoxLayout.Y_AXIS));
     /* 
      * Try to add tabs for every currency
      * On fail add single tab with info for user
@@ -60,7 +62,9 @@ public class FormCurrencies extends Form{
     }
     
     private void createMenuButtons() {
-    	this.menu.addButton("Add currency").addActionListener(new ActionListener() {
+    	JButton addBtn = this.menu.addButton("Add currency");
+        addBtn.setAlignmentX(Component.CENTER_ALIGNMENT);
+        addBtn.addActionListener(new ActionListener() {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -92,7 +96,9 @@ public class FormCurrencies extends Form{
 			
 		});
 
-        this.menu.addButton("Remove currency").addActionListener(new ActionListener() {
+        JButton removeBtn = this.menu.addButton("Remove currency");
+        removeBtn.setAlignmentX(Component.CENTER_ALIGNMENT);
+        removeBtn.addActionListener(new ActionListener() {
 
             @Override
             public void actionPerformed(ActionEvent e) {
