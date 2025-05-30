@@ -60,6 +60,10 @@ public class FormCurrencies extends Form{
         panel.add(this.menu.getForm(), BorderLayout.SOUTH);
         form.add(panel, BorderLayout.EAST);
     }
+
+    private void addKpisToDisplay() {
+        
+    }
     
     private void createMenuButtons() {
     	JButton addBtn = this.menu.addButton("Add currency");
@@ -152,5 +156,7 @@ public class FormCurrencies extends Form{
             JPanel panel = new JPanel();
             this.currenciesPanel.insertTab(c.getName(), null, panel, null, index);
         }
+
+        c.recalculate();
     }
 }

@@ -9,7 +9,7 @@ public class FormKpiDashboard extends Form {
 
     public FormKpiDashboard(MainWindow window) {
         super(window);
-         kpis = new ArrayList<Kpi>();
+        kpis = new ArrayList<Kpi>();
     }
 
 // Gettters and setters
