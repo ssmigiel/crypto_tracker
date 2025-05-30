@@ -32,9 +32,9 @@ public class MainSystem {
     private void initializeData() {
         currencies = new ArrayList<>();
     // TODO implement DB connection to store and retrieve data
-        // currencies.add(new Currency(this, "TAO"));
-        // currencies.add(new Currency(this, "ONDO"));
-        // currencies.add(new Currency(this, "KAS"));
+        currencies.add(new Currency(this, "TAO"));
+        currencies.add(new Currency(this, "ONDO"));
+        currencies.add(new Currency(this, "KAS"));
         
         // Sort currencies by name
         currencies.sort(Comparator.comparing(Currency::getName));

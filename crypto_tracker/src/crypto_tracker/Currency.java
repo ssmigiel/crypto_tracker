@@ -19,12 +19,12 @@ public class Currency {
 	@Column(name = "name", nullable = false)
 	private String name;
 	private boolean isSoftDeleted;
-	private float averageBuyPrice;
-	private float averageSellPrice;
-	private float amountOwned;
-	private float investedUsdt;
-	private float retrievedUsdt;
-	private float profit;
+	private Kpi averageBuyPrice;
+	private Kpi averageSellPrice;
+	private Kpi amountOwned;
+	private Kpi investedUsdt;
+	private Kpi retrievedUsdt;
+	private Kpi profit;
 	
 	// Default empty constructor required by hibernate
 	public Currency() {
@@ -36,11 +36,11 @@ public class Currency {
 		this.system = system;
 		this.name = name;
 		this.isSoftDeleted = false;
-		this.averageBuyPrice = 0;
-		this.averageSellPrice = 0;
-		this.amountOwned = 0;
-		this.investedUsdt = 0;
-		this.retrievedUsdt = 0;
+		this.averageBuyPrice = new Kpi(this, "averageBuyPrice", 0);
+		this.averageSellPrice = new Kpi(this, "averageSellPrice", 0);
+		this.amountOwned = new Kpi(this, "amountOwned", 0);
+		this.investedUsdt = new Kpi(this, "investedUsdt", 0);
+		this.retrievedUsdt = new Kpi(this, "retrievedUsdt", 0);
 	}
 
 // Getters and setters
@@ -83,27 +83,27 @@ public class Currency {
 		this.name = name;
 	}
 	
-	public float getAverageBuyPrice() {
+	public Kpi getAverageBuyPrice() {
 		return averageBuyPrice;
 	}
 	
-	public float getAverageSellPrice() {
+	public Kpi getAverageSellPrice() {
 		return averageSellPrice;
 	}
 	
-	public float getAmountOwned() {
+	public Kpi getAmountOwned() {
 		return amountOwned;
 	}
 	
-	public float getInvestedUsdt() {
+	public Kpi getInvestedUsdt() {
 		return investedUsdt;
 	}
 	
-	public float getRetrievedUsdt() {
+	public Kpi getRetrievedUsdt() {
 		return retrievedUsdt;
 	}
 	
-	public float getProfit() {
+	public Kpi getProfit() {
 		return profit;
 	}
 

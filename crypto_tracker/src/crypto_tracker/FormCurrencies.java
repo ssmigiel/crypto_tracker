@@ -15,6 +15,7 @@ import javax.swing.JTabbedPane;
 public class FormCurrencies extends Form{
     private JTabbedPane currenciesPanel;
     private FormMenu menu;
+    private FormKpiDashboard kpiDashboard;
 
     public FormCurrencies(MainWindow window, List<Currency> currencies) {
     	super(window);
@@ -32,7 +33,9 @@ public class FormCurrencies extends Form{
     	createMenuButtons();
     	
     	currenciesPanel = new JTabbedPane(JTabbedPane.LEFT);
-    	
+
+        kpiDashboard = new FormKpiDashboard(window);
+    	kpiDashboard.setLayout(new BoxLayout(menu.form, BoxLayout.Y_AXIS));
     /* 
      * Try to add tabs for every currency
      * On fail add single tab with info for user
@@ -50,7 +53,10 @@ public class FormCurrencies extends Form{
         }
         
         form.add(this.currenciesPanel, BorderLayout.CENTER);
-        form.add(menu.getForm(), BorderLayout.WEST);
+        JPanel panel = new JPanel(new BorderLayout());
+        panel.add(this.kpiDashboard.getForm(), BorderLayout.CENTER);
+        panel.add(this.menu.getForm(), BorderLayout.SOUTH);
+        form.add(panel, BorderLayout.EAST);
     }
     
     private void createMenuButtons() {
