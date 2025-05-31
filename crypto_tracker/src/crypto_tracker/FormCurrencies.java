@@ -38,6 +38,8 @@ public class FormCurrencies extends Form{
 
         kpiDashboard = new FormKpiDashboard(window);
     	kpiDashboard.setLayout(new BoxLayout(kpiDashboard.form, BoxLayout.Y_AXIS));
+    	
+    	addKpis();
     /* 
      * Try to add tabs for every currency
      * On fail add single tab with info for user
@@ -61,8 +63,8 @@ public class FormCurrencies extends Form{
         form.add(panel, BorderLayout.EAST);
     }
 
-    private void addKpisToDisplay() {
-        
+    private void addKpis() {
+        this.kpiDashboard.addKpiBox();
     }
     
     private void createMenuButtons() {

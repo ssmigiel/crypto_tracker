@@ -1,7 +1,13 @@
 package crypto_tracker;
 
+import java.awt.Color;
 import java.util.ArrayList;
 import java.util.List;
+
+import javax.swing.BorderFactory;
+import javax.swing.Box;
+import javax.swing.BoxLayout;
+import javax.swing.JLabel;
 
 public class FormKpiDashboard extends Form {
     
@@ -15,7 +21,10 @@ public class FormKpiDashboard extends Form {
 // Gettters and setters
 
 // Methods
-    public void addKpi(Kpi kpi) {
-        kpis.add(kpi);
+    public void addKpiBox() {
+        Box box = new Box(BoxLayout.Y_AXIS);
+        box.setBorder(BorderFactory.createLineBorder(Color.black));
+        
+        this.form.add(box);
     }
 }
